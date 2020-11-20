@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Data Diri</title>
+  <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+  <header class="main-header">
+    <nav class="main-header__nav">
+      <ul class="main-header__item-list">
+        <li class="main-header__item"><a href="index.html">Home</a></li>
+        <li class="main-header__item"><a href="about.html">About Zodiak</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main style="margin-left: 10em;">
+    <h1>Isi Data dirimu!</h1>
+      <form name="zodiac">
+      <p>
+        <label for="name">Nama:</label><br>
+        <input type="text" id="name" name="name">
+      </p>
+      <p>
+      <label>Jenis Kelamin:</label><br>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Laki - laki</label><br>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Perempuan</label>
+      </p>
+      <p>
+        <label>No HP:</label><br>
+        <input type="number" id="hp" name="hp" value="hp">
+      </p>
+      <p>
+        <label>Email:</label><br>
+        <input type="text" id="email" name="email">
+      </p>
+      <p>
+        <label>Alamat:</label><br>
+        <textarea name="address" rows="10" cols="30"></textarea> 
+      </p>
+      <p>
+        <label>Kota/Kab:</label><br>
+        <input type="text" id="city" name="city">
+      </p>
+      <p>
+        <label>Upload Fotomu:</label><br>
+        <input type='file' id="foto" name='foto'>
+      </p>
+      <p>
+        <label>Tahun Lahir:</label><br>
+        <input type="text" id="year" name="year">
+      </p>
+      <p>
+        <label>Bulan Lahir:</label><br>
+        <select name="month" id="month">
+        <option value="x">Pilih Bulan Lahir</option>
+        <option value="1">January</option>
+        <option value="2">February</option>
+        <option value="3">Maret</option>
+        <option value="4">April</option>
+        <option value="5">May</option>
+        <option value="6">June</option>
+        <option value="7">July</option>
+        <option value="8">August</option>
+        <option value="9">September</option>
+        <option value="10">October</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
+        </select>
+      </p>
+      <p>
+        <label>Tanggal Lahir:</label><br>
+        <input type="text" id="date" name="date">
+      </p>
+      <p>
+        <input type="button" value="Cari si Dia" onClick="zodiacs()">
+        <input type="reset" value="Reset">
+      </p>
+      <br>
+      <hr>
+        <p>
+          <h1>Ini Hasilnya..</h1>
+          <label>Zodiak:</label><br>
+          <input type="text" id="zodiak" name="sign" disabled>
+        </p>
+        <p>
+          <label>Zodiak yang cocok untuk kamu:</label><br>
+          <input type="text" id="zodiakCocok" name="signMatch" size="30" disabled>
+        </p>
+      </form>
+    </main>
+    <footer>
+      <h5>copyright &copy; 2020 by sjt</h5>
+    </footer>
+    <script language="javascript">
+      let data = [
+        {
+          name: "Steve",
+          gender: "male",
+          hp: 088123123,
+          zodiak: "Pisces"
+        },
+        {
+          name: "Ando",
+          gender: "male",
+          hp: 0817123987,
+          zodiak: "Gemini"
+        },
+        {
+          name: "Firza",
+          gender: "male",
+          hp: 0811675432,
+          zodiak: "Sagitarius"
+        },
+        {
+          name: "Amanda",
+          gender: "female",
+          hp: 08222434343,
+          zodiak: "Cancer"
+        },
+        {
+          name: "Putri",
+          gender: "female",
+          hp: 087723232323,
+          zodiak: "Libra"
+        },
+      ]
+
+      let listZodiak = [];
+      let listCocok = [];
+
+      function zodiacs() {
+        let months = document.getElementById("month")
+        let month = months.options[months.selectedIndex].value
+        let date = document.getElementById("date").value
+        let zodiak = document.getElementById("zodiak")
+        let zodiakCocok = document.getElementById("zodiakCocok")
+
+
+        if (month == 1 && date >=20 || month == 2 && date <=18) {
+          zodiak.value = "Aquarius"
+          listZodiak = ["Sagitarius", "Capricorn", "Gemini"]
+          zodiakCocok.value = "Sagitarius, Capricorn, Gemini"
+          console.log(zodiak, zodiakCocok)
+        }
+        if (month == 2 && date >=19 || month == 3 && date <=20) {
+          zodiak.value = "Pisces"
+          listZodiak = ["Aquarius", "Cancer", "Capricorn"]
+          zodiakCocok.value = "Aquarius, Cancer, Capricorn"
+          console.log(zodiak, zodiakCocok)
+        }
+        if (month == 3 && date >=21 || month == 4 && date <=19) {
+          zodiak.value = "Aries"
+          listZodiak = ["Libra", "Virgo", "Leo"]
+          zodiakCocok.value = "Libra, Virgo, Leo"
+          console.log(zodiak, zodiakCocok)
+        }
+        if (month == 4 && date >=20 || month == 5 && date <=20) {
+          zodiak.value = "Taurus"
+          listZodiak = ["Taurus", "Libra", "Aries"]
+          zodiakCocok.value = "Taurus, Libra, Aries"
+          console.log(zodiak, zodiakCocok)
+        }
+        if (month == 5 && date >=21 || month == 6 && date <=21) {
+          zodiak.value = "Gemini"
+          listZodiak = ["Sagitarius", "Aquarius", "Cancer"]
+          zodiakCocok.value = "Sagitarius, Aquarius, Cancer"
+          console.log(zodiak, zodiakCocok)
+        }
+        if (month == 6 && date >=22 || month == 7 && date <=22) {
+          zodiak.value = "Cancer"
+          listZodiak = ["Aquarius", "Capricorn", "Sagitarius"]
+          zodiakCocok.value = "Aquarius, Capricorn, Sagitarius"
+          console.log(zodiak, zodiakCocok)
+        }
+        if (month == 7 && date >=23 || month == 8 && date <=22) {
+          zodiak.value = "Leo"
+          listZodiak = ["Aries", "Gemini", "Libra"]
+          zodiakCocok.value = "Aries, Gemini, Libra"
+          console.log(zodiak, zodiakCocok)
+        }
+        if (month == 8 && date >=23 || month == 9 && date <=22) {
+          zodiak.value = "Virgo"
+          listZodiak = ["Scorpio", "Aries", "Libra"]
+          zodiakCocok.value = "Scorpio, Aries, Libra"
+          console.log(zodiak, zodiakCocok)
+        }
+        if (month == 9 && date >=23 || month == 10 && date <=22) {
+          zodiak.value = "Libra"
+          listZodiak = ["Aries", "Virgo", "Taurus"]
+          zodiakCocok.value = "Aries, Virgo, Taurus"
+          console.log(zodiak, zodiakCocok)
+        }
+        if (month == 10 && date >=23 || month == 11 && date <=21) {
+          zodiak.value = "Scorpio"
+          listZodiak = ["Virgo", "Aries", "Pisces"]
+          zodiakCocok.value = "Virgo, Aries, Pisces"
+          console.log(zodiak, zodiakCocok)
+        }
+        if (month == 11 && date >=22 || month == 12 && date <=21) {
+          zodiak.value = "Sagitarius"
+          listZodiak = ["Capricorn", "Aquarius", "Gemini"]
+          zodiakCocok.value = "Capricorn, Aquarius, Gemini"
+          console.log(zodiak, zodiakCocok)
+        }
+        if (month == 12 && date >=22 || month == 1 && date <=19) {
+          zodiak.value = "Capricorn"
+          listZodiak = ["Sagitarius", "Aquarius", "Gemini"]
+          zodiakCocok.value = "Sagitarius, Aquarius, Gemini"
+          console.log(zodiak, zodiakCocok)
+        }
+
+        for (let j = 0; j < listZodiak.length; j++) {
+          for (let i = 0; i < data.length; i++) {
+            let name = data[i].name
+            let gender = data[i].gender
+            let hp = data[i].hp
+            let zodiak = data[i].zodiak
+          
+            if (listZodiak[j] === zodiak) {
+              listCocok.push(data[i])
+            }
+          }
+        }
+        console.log(listCocok);
+      }
+  </script>
+</body>
+</html>
